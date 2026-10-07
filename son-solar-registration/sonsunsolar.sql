@@ -1,6 +1,6 @@
-﻿CREATE DATABASE IF NOT EXISTS `sun-son-solar`;
+CREATE DATABASE IF NOT EXISTS `sunsonsolar`;
 
-USE `sun-son-solar`;
+USE `sunsonsolar`;
 
 -- USERS TABLE
 CREATE TABLE IF NOT EXISTS users (
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 -- KATHERINE SINGARAW ADMIN
-INSERT INTO users (
+INSERT IGNORE INTO users (
     first_name,
     last_name,
     middle_name,
@@ -50,7 +50,7 @@ INSERT INTO users (
 );
 
 -- SOL SOLIS ADMIN
-INSERT INTO users (
+INSERT IGNORE INTO users (
     first_name,
     last_name,
     middle_name,
@@ -78,12 +78,17 @@ INSERT INTO users (
     NULL
 );
 
-INSERT INTO DEPARTMENT (name) VALUES 
-('Administration'), 
-('IT'), 
+CREATE TABLE IF NOT EXISTS DEPARTMENT (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+INSERT IGNORE INTO DEPARTMENT (name) VALUES
+('Administration'),
+('IT'),
 ('Dispatch'),
-('Accounting'), 
-('HR'), 
-('Marketing'), 
-('Sales'), 
-('Customer Service'), 
+('Accounting'),
+('HR'),
+('Marketing'),
+('Sales'),
+('Customer Service');
